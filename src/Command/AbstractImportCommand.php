@@ -58,6 +58,7 @@ abstract class AbstractImportCommand
 
         return match ($propertyName) {
             'string' => $value,
+            'int' => intval($value),
             'DateTimeImmutable' => static::createDateTimeImmutable($attribute, (string) $value),
             'bool' => static::createBool($property, $attribute, $value),
             default => throw new \LogicException(sprintf('Unknown property type "%s"', $propertyName))
