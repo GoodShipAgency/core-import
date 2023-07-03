@@ -7,7 +7,7 @@ namespace Mashbo\CoreImport\Command\Attributes;
 #[\Attribute]
 class ImportDateFrom extends ImportFrom
 {
-    public function __construct(string $header, protected string $format = 'd/m/Y')
+    public function __construct(string $header, protected string $format = 'd/m/Y', protected bool $nullable = false)
     {
         parent::__construct($header);
     }
@@ -15,5 +15,10 @@ class ImportDateFrom extends ImportFrom
     public function getFormat(): string
     {
         return $this->format;
+    }
+
+    public function isNullable(): bool
+    {
+        return $this->nullable;
     }
 }

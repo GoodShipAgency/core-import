@@ -46,7 +46,7 @@ abstract class AbstractImportCommand
         /** @var ?\ReflectionNamedType $propertyType */
         $propertyType = $property->getType();
 
-        if ($value === null || $value === "") {
+        if ($value === null) {
             if ($propertyType?->allowsNull()) {
                 return null;
             } else {
@@ -59,18 +59,24 @@ abstract class AbstractImportCommand
         return match ($propertyName) {
             'string' => $value,
             'int' => intval($value),
-            'DateTimeImmutable' => static::createDateTimeImmutable($attribute, (string) $value),
+            'DateTimeImmutable' => static::createDateTimeImmutable($attribute, $value),
             'bool' => static::createBool($property, $attribute, $value),
             default => throw new \LogicException(sprintf('Unknown property type "%s"', $propertyName))
         };
     }
 
-    private static function createDateTimeImmutable(ImportFrom $attribute, string $value): \DateTimeImmutable
+    private static function createDateTimeImmutable(ImportFrom $attribute, mixed $value): ?\DateTimeImmutable
     {
         if ($attribute instanceof ImportDateFrom) {
             $format = $attribute->getFormat();
 
-            $dateTime = \DateTimeImmutable::createFromFormat($format, $value);
+            if ($value === "" || $value === null) {
+                if ($attribute->isNullable()) {
+                    return null;
+                }
+            }
+
+            $dateTime = \DateTimeImmutable::createFromFormat($format, (string) $value);
 
             if ($dateTime === false) {
                 throw new \LogicException(sprintf('DateTimeImmutable "%s" did not match format "%s"', $value, $format));
