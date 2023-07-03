@@ -46,7 +46,7 @@ abstract class AbstractImportCommand
         /** @var ?\ReflectionNamedType $propertyType */
         $propertyType = $property->getType();
 
-        if ($value === null) {
+        if ($value === null || $value === "") {
             if ($propertyType?->allowsNull()) {
                 return null;
             } else {
