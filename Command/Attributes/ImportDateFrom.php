@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\CareerConnect\Application\Common\ImportCommandConverter\Attributes;
+namespace Mashbo\CoreImport\Command\Attributes;
 
 #[\Attribute]
 class ImportDateFrom extends ImportFrom

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\CareerConnect\Application\Common\ImportCommandConverter;
+namespace Mashbo\CoreImport\Command;
 
-use App\CareerConnect\Application\Common\ImportCommandConverter\Attributes\ImportBoolFrom;
-use App\CareerConnect\Application\Common\ImportCommandConverter\Attributes\ImportDateFrom;
-use App\CareerConnect\Application\Common\ImportCommandConverter\Attributes\ImportFrom;
+use Mashbo\CoreImport\Command\Attributes\ImportBoolFrom;
+use Mashbo\CoreImport\Command\Attributes\ImportDateFrom;
+use Mashbo\CoreImport\Command\Attributes\ImportFrom;
 
 /**
  * @psalm-consistent-constructor
