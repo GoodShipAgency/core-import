@@ -1,0 +1,8 @@
+{
+    "name": "mashbo/core-import",
+    "type": "library",
+    "description": "Mashbo Core Import Package contains shared code relating to importing CSV files",
+    "require": {
+        "php": "^8.0"
+    }
+}
