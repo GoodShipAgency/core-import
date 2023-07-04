@@ -3,7 +3,8 @@
     "type": "library",
     "description": "Mashbo Core Import Package contains shared code relating to importing CSV files",
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "moneyphp/money": "^4.1"
     },
     "autoload": {
         "psr-4": {
